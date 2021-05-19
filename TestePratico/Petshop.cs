@@ -29,6 +29,7 @@ namespace TestePratico
             TaxaBanhoFimDeSemana_G = taxaBanhoFimDeSemana_G;
         }
 
+        //Calcula custo dos banhos dos cachorros
         public double CustoTotal(int diaDaSemana, int quantidadeCaesP, int quantidadeCaesG)
         {
             double custoTotal;
@@ -45,6 +46,7 @@ namespace TestePratico
             return custoTotal;
         }
 
+        //Dados os custos dos bahos, retorna o valor do menor preço
         public static double CalculaMelhorPreco(double custoMeuCaninoFeliz, double custoVaiRex, double custoChowChawgas)
         {
             double melhorPreco;
@@ -73,6 +75,7 @@ namespace TestePratico
             return melhorPreco;
         }
 
+        //Caso haja empate entre os custos, é chamada a função de desempate
         private static double Desempate(double custoMeuCaninoFeliz, double custoVaiRex, double custoChowChawgas)
         {
             double melhorPreco = 0;
