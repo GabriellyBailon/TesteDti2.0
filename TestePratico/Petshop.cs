@@ -6,16 +6,18 @@ namespace TestePratico
 {
     class Petshop
     {
+        //Nome do Petshop
         public string Nome { get; set; }
         public double Distancia { get; private set; }
-        public double TaxaBanhoDiaDeSemana_P { get; set; }
-        public double TaxaBanhoDiaDeSemana_G { get; set; }
-        public double TaxaBanhoFimDeSemana_P { get; set; }
-        public double TaxaBanhoFimDeSemana_G { get; set; }
-
+        public double TaxaBanhoDiaDeSemana_P { get; private set; }
+        public double TaxaBanhoDiaDeSemana_G { get; private set; }
+        public double TaxaBanhoFimDeSemana_P { get; private set; }
+        public double TaxaBanhoFimDeSemana_G { get; private set; }
+        public static double MelhorPreco { get; private set; }
+        public static string NomeMelhorPreco { get; private set; }
 
         //Construtor
-        public Petshop(string nome, double distancia, 
+        public Petshop(string nome, double distancia,
             double taxaBanhoDiaDeSemana_P, double taxaBanhoDiaDeSemana_G,
             double taxaBanhoFimDeSemana_P, double taxaBanhoFimDeSemana_G)
         {
@@ -26,7 +28,6 @@ namespace TestePratico
             TaxaBanhoFimDeSemana_P = taxaBanhoFimDeSemana_P;
             TaxaBanhoFimDeSemana_G = taxaBanhoFimDeSemana_G;
         }
-
 
         public double CustoTotal(int diaDaSemana, int quantidadeCaesP, int quantidadeCaesG)
         {
@@ -44,50 +45,57 @@ namespace TestePratico
             return custoTotal;
         }
 
-        public static double MelhorPreco(double custoMeuCaninoFeliz, double custoVaiRex, double custoChowChawgas)
+        public static double CalculaMelhorPreco(double custoMeuCaninoFeliz, double custoVaiRex, double custoChowChawgas)
         {
             double melhorPreco;
 
-            if(custoMeuCaninoFeliz < custoVaiRex && custoMeuCaninoFeliz < custoChowChawgas)
+            if (custoMeuCaninoFeliz < custoVaiRex && custoMeuCaninoFeliz < custoChowChawgas)
             {
-                melhorPreco = custoMeuCaninoFeliz;
+                MelhorPreco = melhorPreco = custoMeuCaninoFeliz;
+                NomeMelhorPreco = "Meu Canino Feliz";
+
             }
             else if (custoVaiRex < custoMeuCaninoFeliz && custoVaiRex < custoChowChawgas)
             {
-                melhorPreco = custoVaiRex;
-                Console.WriteLine("Vai Rex");
+                MelhorPreco = melhorPreco = custoVaiRex;
+                NomeMelhorPreco = "Vai Rex";
             }
             else if (custoChowChawgas < custoMeuCaninoFeliz && custoChowChawgas < custoVaiRex)
             {
-                melhorPreco = custoChowChawgas;
-                Console.WriteLine("ChowChawgas");
+                MelhorPreco = melhorPreco = custoChowChawgas;
+                NomeMelhorPreco = "ChowChawgas";
             }
             else
             {
                 melhorPreco = Desempate(custoMeuCaninoFeliz, custoVaiRex, custoChowChawgas);
+               
             }
-
             return melhorPreco;
         }
 
         private static double Desempate(double custoMeuCaninoFeliz, double custoVaiRex, double custoChowChawgas)
         {
-            double melhorPreco = 0.0;
+            double melhorPreco = 0;
 
             if (custoMeuCaninoFeliz == custoChowChawgas || custoVaiRex == custoChowChawgas)
             {
                 melhorPreco = custoChowChawgas;
+                NomeMelhorPreco = "ChowChawgas";
             }
             else if (custoMeuCaninoFeliz == custoVaiRex)
             {
                 melhorPreco = custoVaiRex;
+                NomeMelhorPreco = "Vai Rex";
             }
 
             return melhorPreco;
+
         }
+
+
+
     }
 
-    
 
+    }
 
-}
