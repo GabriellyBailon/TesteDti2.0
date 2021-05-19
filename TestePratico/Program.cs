@@ -13,12 +13,13 @@ namespace TestePratico
             int quantidadeP, quantidadeG;
             double custoTotal1, custoTotal2, custoTotal3;
             double melhorCusto;
+            string nomePetshopMelhorCusto;
 
             Petshop meuCaninoFeliz = new Petshop("Meu Canino Feliz", 2000, 20, 40, 24, 48);
             Petshop vaiRex = new Petshop("Vai Rex", 1700, 15, 50, 20, 55);
             Petshop chowChawgas = new Petshop("ChowChawgas", 800, 30, 45, 30, 45);
 
-            Console.WriteLine("Bem-vindo (a) a nossa calculadora do melhor valor!");
+            Console.WriteLine("Bem-vindo(a) à nossa calculadora do melhor valor!");
             Console.WriteLine("Buscando o melhor preço para cuidar do seu melhor amigo!");
 
             Console.WriteLine("\nVamos lá!");
@@ -39,10 +40,11 @@ namespace TestePratico
             custoTotal2 = vaiRex.CustoTotal(diaDeHoje, quantidadeP, quantidadeG);
             custoTotal3 = chowChawgas.CustoTotal(diaDeHoje, quantidadeP, quantidadeG);
 
-            melhorCusto = Petshop.MelhorPreco(custoTotal1, custoTotal2, custoTotal3);
+            melhorCusto = Petshop.CalculaMelhorPreco(custoTotal1, custoTotal2, custoTotal3);
+            nomePetshopMelhorCusto = Petshop.NomeMelhorPreco;
 
-            Console.WriteLine($"O melhor valor foi encontrado na " +
-                $"{melhorCusto.ToString("F2", CultureInfo.InvariantCulture)} por R$");
+            Console.WriteLine($"\nO melhor valor foi encontrado na {nomePetshopMelhorCusto}" +
+                $" por R${melhorCusto.ToString("F2", CultureInfo.InvariantCulture)}");
         }
     }
 }
