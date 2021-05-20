@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace TestePratico
+
+    // O que quero fazer
+    //Petshop seja interface e cada petshop uma classe
+    //Melhor preço e Desempate retorne uma lista com nome e valor,
+    //aí então retirar as propriedades MelhorPreco e NomeMelhorPreco
 {
     class Petshop
     {
