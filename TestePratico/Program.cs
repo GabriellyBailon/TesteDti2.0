@@ -43,6 +43,7 @@ namespace TestePratico
             melhorCusto = Petshop.CalculaMelhorPreco(custoTotal1, custoTotal2, custoTotal3);
             nomePetshopMelhorCusto = Petshop.NomeMelhorPreco;
 
+
             Console.WriteLine($"\nO melhor valor foi encontrado na {nomePetshopMelhorCusto}" +
                 $" por R${melhorCusto.ToString("F2", CultureInfo.InvariantCulture)}");
         }
