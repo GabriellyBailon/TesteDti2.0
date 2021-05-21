@@ -52,6 +52,7 @@ namespace TestePratico
         }
 
         //Dados os custos dos bahos, retorna o valor do menor preço
+        //Analisar a possibilidade de usar params
         public static double CalculaMelhorPreco(double custoMeuCaninoFeliz, double custoVaiRex, double custoChowChawgas)
         {
             double melhorPreco;
