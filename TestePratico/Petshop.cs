@@ -33,14 +33,10 @@ namespace TestePratico
             double custoTotal;
 
             //Cálculo feito para pesquisa de segunda a sexta
-            if (diaDaSemana > 0 && diaDaSemana < 6)
-            {
-                custoTotal = (this.TaxaBanhoDiaDeSemana_P * quantidadeCaesP) + (this.TaxaBanhoDiaDeSemana_G * quantidadeCaesG);
-            }
-            else
-            {
-                custoTotal = (this.TaxaBanhoFimDeSemana_P * quantidadeCaesP) + (this.TaxaBanhoFimDeSemana_G * quantidadeCaesG);
-            }
+            //Era um if/else
+            custoTotal = (diaDaSemana > 0 && diaDaSemana < 6)? 
+                (this.TaxaBanhoDiaDeSemana_P * quantidadeCaesP) + (this.TaxaBanhoDiaDeSemana_G * quantidadeCaesG) :
+                (this.TaxaBanhoFimDeSemana_P * quantidadeCaesP) + (this.TaxaBanhoFimDeSemana_G * quantidadeCaesG);
 
             return custoTotal;
         }
@@ -95,10 +91,6 @@ namespace TestePratico
 
         }
 
-
-
     }
-
-
     }
 
