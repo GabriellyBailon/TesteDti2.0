@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Collections.Generic;
 
 namespace TestePratico
 {
@@ -12,8 +13,7 @@ namespace TestePratico
             int diaDeHoje;
             int quantidadeP, quantidadeG;
             double custoTotal1, custoTotal2, custoTotal3;
-            double melhorCusto;
-            string nomePetshopMelhorCusto;
+            List<string> melhorCusto;
 
             Petshop meuCaninoFeliz = new Petshop("Meu Canino Feliz", 2000, 20, 40, 24, 48);
             Petshop vaiRex = new Petshop("Vai Rex", 1700, 15, 50, 20, 55);
@@ -41,11 +41,10 @@ namespace TestePratico
             custoTotal3 = chowChawgas.CustoTotal(diaDeHoje, quantidadeP, quantidadeG);
 
             melhorCusto = Petshop.CalculaMelhorPreco(custoTotal1, custoTotal2, custoTotal3);
-            nomePetshopMelhorCusto = Petshop.NomeMelhorPreco;
 
 
-            Console.WriteLine($"\nO melhor valor foi encontrado na {nomePetshopMelhorCusto}" +
-                $" por R${melhorCusto.ToString("F2", CultureInfo.InvariantCulture)}");
+            Console.WriteLine($"\nO melhor valor foi encontrado na {melhorCusto[0]}" +
+                $" por R${melhorCusto[1]}");
         }
     }
 }

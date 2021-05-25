@@ -3,11 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace TestePratico
-
-    // O que quero fazer
-    //Petshop seja interface e cada petshop uma classe
-    //Melhor preço e Desempate retorne uma lista com nome e valor,
-    //aí então retirar as propriedades MelhorPreco e NomeMelhorPreco
 {
     class Petshop
     {
@@ -18,8 +13,6 @@ namespace TestePratico
         public double TaxaBanhoDiaDeSemana_G { get; private set; }
         public double TaxaBanhoFimDeSemana_P { get; private set; }
         public double TaxaBanhoFimDeSemana_G { get; private set; }
-        public static double MelhorPreco { get; private set; }
-        public static string NomeMelhorPreco { get; private set; }
 
         //Construtor
         public Petshop(string nome, double distancia,
@@ -38,6 +31,7 @@ namespace TestePratico
         public double CustoTotal(int diaDaSemana, int quantidadeCaesP, int quantidadeCaesG)
         {
             double custoTotal;
+
             //Cálculo feito para pesquisa de segunda a sexta
             if (diaDaSemana > 0 && diaDaSemana < 6)
             {
@@ -53,51 +47,51 @@ namespace TestePratico
 
         //Dados os custos dos bahos, retorna o valor do menor preço
         //Analisar a possibilidade de usar params
-        public static double CalculaMelhorPreco(double custoMeuCaninoFeliz, double custoVaiRex, double custoChowChawgas)
+        public static List<string> CalculaMelhorPreco(double custoMeuCaninoFeliz, double custoVaiRex, double custoChowChawgas)
         {
-            double melhorPreco;
+            List<string> dadosMelhorPreco = new List<string>();
 
             if (custoMeuCaninoFeliz < custoVaiRex && custoMeuCaninoFeliz < custoChowChawgas)
             {
-                MelhorPreco = melhorPreco = custoMeuCaninoFeliz;
-                NomeMelhorPreco = "Meu Canino Feliz";
+                dadosMelhorPreco.Add("Meu Canino Feliz");
+                dadosMelhorPreco.Add(custoMeuCaninoFeliz.ToString("F2"));
 
             }
             else if (custoVaiRex < custoMeuCaninoFeliz && custoVaiRex < custoChowChawgas)
             {
-                MelhorPreco = melhorPreco = custoVaiRex;
-                NomeMelhorPreco = "Vai Rex";
+                dadosMelhorPreco.Add("Vai Rex");
+                dadosMelhorPreco.Add(custoVaiRex.ToString("F2"));
             }
             else if (custoChowChawgas < custoMeuCaninoFeliz && custoChowChawgas < custoVaiRex)
             {
-                MelhorPreco = melhorPreco = custoChowChawgas;
-                NomeMelhorPreco = "ChowChawgas";
+                dadosMelhorPreco.Add("ChowChawgas");
+                dadosMelhorPreco.Add(custoChowChawgas.ToString("F2"));
             }
             else
             {
-                melhorPreco = Desempate(custoMeuCaninoFeliz, custoVaiRex, custoChowChawgas);
+                dadosMelhorPreco = Desempate(custoMeuCaninoFeliz, custoVaiRex, custoChowChawgas);
                
             }
-            return melhorPreco;
+            return dadosMelhorPreco;
         }
 
         //Caso haja empate entre os custos, é chamada a função de desempate
-        private static double Desempate(double custoMeuCaninoFeliz, double custoVaiRex, double custoChowChawgas)
+        private static List<string> Desempate(double custoMeuCaninoFeliz, double custoVaiRex, double custoChowChawgas)
         {
-            double melhorPreco = 0;
+            List<string> dadosMelhorPreco = new List<string>();
 
             if (custoMeuCaninoFeliz == custoChowChawgas || custoVaiRex == custoChowChawgas)
             {
-                melhorPreco = custoChowChawgas;
-                NomeMelhorPreco = "ChowChawgas";
+                dadosMelhorPreco.Add("ChowChawgas");
+                dadosMelhorPreco.Add(custoChowChawgas.ToString("F2"));
             }
             else if (custoMeuCaninoFeliz == custoVaiRex)
             {
-                melhorPreco = custoVaiRex;
-                NomeMelhorPreco = "Vai Rex";
+                dadosMelhorPreco.Add("Vai Rex");
+                dadosMelhorPreco.Add(custoVaiRex.ToString("F2"));
             }
 
-            return melhorPreco;
+            return dadosMelhorPreco;
 
         }
 
