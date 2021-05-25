@@ -43,48 +43,52 @@ namespace TestePratico
 
         //Dados os custos dos bahos, retorna o valor do menor preço
         //Analisar a possibilidade de usar params
-        public static List<string> CalculaMelhorPreco(double custoMeuCaninoFeliz, double custoVaiRex, double custoChowChawgas)
+        public static List<string> CalculaMelhorPreco(List<double> custos)
         {
+            //Custo 0: Meu Canino Feliz
+            //Custo 1: Vai Rex
+            //Custo 2: ChowChawgas
+
             List<string> dadosMelhorPreco = new List<string>();
 
-            if (custoMeuCaninoFeliz < custoVaiRex && custoMeuCaninoFeliz < custoChowChawgas)
+            if (custos[0] < custos[1] && custos[0] < custos[2])
             {
                 dadosMelhorPreco.Add("Meu Canino Feliz");
-                dadosMelhorPreco.Add(custoMeuCaninoFeliz.ToString("F2"));
+                dadosMelhorPreco.Add(custos[0].ToString("F2"));
 
             }
-            else if (custoVaiRex < custoMeuCaninoFeliz && custoVaiRex < custoChowChawgas)
+            else if (custos[1] < custos[0] && custos[1] < custos[2])
             {
                 dadosMelhorPreco.Add("Vai Rex");
-                dadosMelhorPreco.Add(custoVaiRex.ToString("F2"));
+                dadosMelhorPreco.Add(custos[1].ToString("F2"));
             }
-            else if (custoChowChawgas < custoMeuCaninoFeliz && custoChowChawgas < custoVaiRex)
+            else if (custos[2] < custos[0] && custos[2] < custos[1])
             {
                 dadosMelhorPreco.Add("ChowChawgas");
-                dadosMelhorPreco.Add(custoChowChawgas.ToString("F2"));
+                dadosMelhorPreco.Add(custos[2].ToString("F2"));
             }
             else
             {
-                dadosMelhorPreco = Desempate(custoMeuCaninoFeliz, custoVaiRex, custoChowChawgas);
+                dadosMelhorPreco = Desempate(custos);
                
             }
             return dadosMelhorPreco;
         }
 
         //Caso haja empate entre os custos, é chamada a função de desempate
-        private static List<string> Desempate(double custoMeuCaninoFeliz, double custoVaiRex, double custoChowChawgas)
+        private static List<string> Desempate(List<double> custos)
         {
             List<string> dadosMelhorPreco = new List<string>();
 
-            if (custoMeuCaninoFeliz == custoChowChawgas || custoVaiRex == custoChowChawgas)
+            if (custos[0] == custos[2] || custos[1] == custos[2])
             {
                 dadosMelhorPreco.Add("ChowChawgas");
-                dadosMelhorPreco.Add(custoChowChawgas.ToString("F2"));
+                dadosMelhorPreco.Add(custos[2].ToString("F2"));
             }
-            else if (custoMeuCaninoFeliz == custoVaiRex)
+            else if (custos[0] == custos[1])
             {
                 dadosMelhorPreco.Add("Vai Rex");
-                dadosMelhorPreco.Add(custoVaiRex.ToString("F2"));
+                dadosMelhorPreco.Add(custos[1].ToString("F2"));
             }
 
             return dadosMelhorPreco;
