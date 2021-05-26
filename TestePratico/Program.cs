@@ -58,7 +58,6 @@ namespace TestePratico
                 custos.Add(custoTotal2);
                 custos.Add(custoTotal3);
 
-
                 //Lista que guarda nome do Petshop de melhor preço e custo encontrado nele
                 melhorCusto = Petshop.CalculaMelhorPreco(custos);
 
