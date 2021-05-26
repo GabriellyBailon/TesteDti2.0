@@ -23,6 +23,7 @@ namespace TestePratico
             Petshop vaiRex = new Petshop("Vai Rex", 1700, 15, 50, 20, 55);
             Petshop chowChawgas = new Petshop("ChowChawgas", 800, 30, 45, 30, 45);
 
+            //Loop caso o cliente queira repetir o processo
             while (true)
             {
                 //Boas vindas
