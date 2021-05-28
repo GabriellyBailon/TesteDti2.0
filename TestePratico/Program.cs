@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Collections.Generic;
+using TestePratico.Calculos;
 
 namespace TestePratico
 {
@@ -49,21 +50,16 @@ namespace TestePratico
                 quantidadeG = int.Parse(Console.ReadLine());
 
                 //Cálculo dos custos
-                custoTotal1 = meuCaninoFeliz.CustoTotal(diaDeHoje, quantidadeP, quantidadeG);
-                custoTotal2 = vaiRex.CustoTotal(diaDeHoje, quantidadeP, quantidadeG);
-                custoTotal3 = chowChawgas.CustoTotal(diaDeHoje, quantidadeP, quantidadeG);
-
-                //Inserindo os custos na lista que será passada para a função
-                custos.Add(custoTotal1);
-                custos.Add(custoTotal2);
-                custos.Add(custoTotal3);
+                meuCaninoFeliz.SetCusto(diaDeHoje, quantidadeP, quantidadeG);
+                vaiRex.SetCusto(diaDeHoje, quantidadeP, quantidadeG);
+                chowChawgas.SetCusto(diaDeHoje, quantidadeP, quantidadeG);
 
                 //Lista que guarda nome do Petshop de melhor preço e custo encontrado nele
-                melhorCusto = Petshop.CalculaMelhorPreco(custos);
+                melhorCusto = CalculaCustos.CalculaMelhorPreco(meuCaninoFeliz, vaiRex, chowChawgas);
 
                 //Impressão do resultado para o usuário
-                Console.WriteLine($"\nO melhor valor foi encontrado na {melhorCusto[0]}" +
-                    $" por R${melhorCusto[1]}");
+                Console.WriteLine($"\nO melhor valor foi encontrado na {melhorCusto[0]} por R${melhorCusto[1]}");
+                //na {melhorCusto[0]}
 
                 Console.WriteLine("Deseja repetir o processo? S/N: ");
                 resposta = char.Parse(Console.ReadLine());
