@@ -14,7 +14,6 @@ namespace TestePratico
             int dia, mes, ano;
             int diaDeHoje;
             int quantidadeP, quantidadeG;
-            double custoTotal1, custoTotal2, custoTotal3;
             List<double> custos = new List<double>();
             List<string> melhorCusto;
             char resposta;
