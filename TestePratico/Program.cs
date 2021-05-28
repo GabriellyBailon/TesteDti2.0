@@ -15,7 +15,7 @@ namespace TestePratico
             int quantidadeP, quantidadeG;
             List<double> custos = new List<double>();
             List<string> melhorCusto;
-            char resposta;
+            string resposta;
 
             //Criação dos objetos Petshop
             Petshop meuCaninoFeliz = new Petshop("Meu Canino Feliz", 2000, 20, 40, 24, 48);
@@ -60,9 +60,9 @@ namespace TestePratico
                 //na {melhorCusto[0]}
 
                 Console.WriteLine("Deseja repetir o processo? S/N: ");
-                resposta = char.Parse(Console.ReadLine());
+                resposta = Console.ReadLine().ToUpper();
 
-                if (resposta == 'n' || resposta == 'N')
+                if (resposta[0] == 'N')
                 {
                     Console.WriteLine("Até a próxima!");
                     break;
