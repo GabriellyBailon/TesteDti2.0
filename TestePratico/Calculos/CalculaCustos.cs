@@ -23,9 +23,6 @@ namespace TestePratico.Calculos
                     petshopMelhorPreco = petshop;
                 }
             }
-                _dadosMelhorPreco.Add(petshopMelhorPreco.Nome);
-                _dadosMelhorPreco.Add(petshopMelhorPreco.Custo.ToString("F2"));
-
 
             //Analisa se o menor valor encontrado se repetiu mais de uma vez entre os custos
             if (vetorPetshops.Count(x => x.Custo == melhorCusto) > 1)
