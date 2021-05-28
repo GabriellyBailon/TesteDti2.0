@@ -6,22 +6,7 @@ using System.Text;
 namespace TestePratico.Calculos
 {
     class CalculaCustos
-    {
-        //Calcula custo dos banhos dos cachorros
-
-        public static double CustoTotal(int diaDaSemana, int quantidadeCaesP, int quantidadeCaesG, Petshop petshop)
-        {
-            double custoTotal;
-
-            //Cálculo feito para pesquisa de segunda a sexta
-            //Era um if/else
-            custoTotal = (diaDaSemana > 0 && diaDaSemana < 6) ?
-                (petshop.TaxaBanhoDiaDeSemana_P * quantidadeCaesP) + (petshop.TaxaBanhoDiaDeSemana_G * quantidadeCaesG) :
-                (petshop.TaxaBanhoFimDeSemana_P * quantidadeCaesP) + (petshop.TaxaBanhoFimDeSemana_G * quantidadeCaesG);
-
-            return custoTotal;
-        }
-
+    { 
         public static List<string> CalculaMelhorPreco(List<double> custos)
         {
             //Custo 0: Meu Canino Feliz
