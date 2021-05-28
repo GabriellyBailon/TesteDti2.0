@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace TestePratico.Calculos
 {
     class CalculaCustos
     {
+        //Constante de referência, maior que a maior distância que temos nas informações dos Petshops
         public const double maiorDistancia = 2100;
+
         public static List<string> CalculaMelhorPreco(params Petshop[] vetorPetshops)
         {
             List<string> _dadosMelhorPreco = new List<string>();
