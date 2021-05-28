@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Collections.Generic;
+using TestePratico.Calculos;
 
 namespace TestePratico
 {
@@ -49,9 +50,9 @@ namespace TestePratico
                 quantidadeG = int.Parse(Console.ReadLine());
 
                 //Cálculo dos custos
-                custoTotal1 = meuCaninoFeliz.CustoTotal(diaDeHoje, quantidadeP, quantidadeG);
-                custoTotal2 = vaiRex.CustoTotal(diaDeHoje, quantidadeP, quantidadeG);
-                custoTotal3 = chowChawgas.CustoTotal(diaDeHoje, quantidadeP, quantidadeG);
+                custoTotal1 = CalculaCustos.CustoTotal(diaDeHoje, quantidadeP, quantidadeG, meuCaninoFeliz);
+                custoTotal2 = CalculaCustos.CustoTotal(diaDeHoje, quantidadeP, quantidadeG, vaiRex);
+                custoTotal3 = CalculaCustos.CustoTotal(diaDeHoje, quantidadeP, quantidadeG, chowChawgas);
 
                 //Inserindo os custos na lista que será passada para a função
                 custos.Add(custoTotal1);
@@ -59,7 +60,7 @@ namespace TestePratico
                 custos.Add(custoTotal3);
 
                 //Lista que guarda nome do Petshop de melhor preço e custo encontrado nele
-                melhorCusto = Petshop.CalculaMelhorPreco(custos);
+                melhorCusto = CalculaCustos.CalculaMelhorPreco(custos);
 
                 //Impressão do resultado para o usuário
                 Console.WriteLine($"\nO melhor valor foi encontrado na {melhorCusto[0]}" +
