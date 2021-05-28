@@ -28,10 +28,6 @@ namespace TestePratico
             TaxaBanhoFimDeSemana_P = taxaBanhoFimDeSemana_P;
             TaxaBanhoFimDeSemana_G = taxaBanhoFimDeSemana_G;
         }
-        public Petshop()
-        {
-
-        }
 
         public void SetCusto(int diaDaSemana, int quantidadeCaesP, int quantidadeCaesG)
         {
