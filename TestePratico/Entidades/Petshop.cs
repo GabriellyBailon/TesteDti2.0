@@ -14,6 +14,7 @@ namespace TestePratico
         public double TaxaBanhoFimDeSemana_P { get; private set; }
         public double TaxaBanhoFimDeSemana_G { get; private set; }
 
+
         //Construtor
         public Petshop(string nome, double distancia,
             double taxaBanhoDiaDeSemana_P, double taxaBanhoDiaDeSemana_G,

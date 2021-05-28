@@ -63,8 +63,7 @@ namespace TestePratico
                 melhorCusto = CalculaCustos.CalculaMelhorPreco(custos);
 
                 //Impressão do resultado para o usuário
-                Console.WriteLine($"\nO melhor valor foi encontrado na {melhorCusto[0]}" +
-                    $" por R${melhorCusto[1]}");
+                Console.WriteLine($"\nO melhor valor foi encontrado na {melhorCusto[0]} por R${melhorCusto[1]}");
 
                 Console.WriteLine("Deseja repetir o processo? S/N: ");
                 resposta = char.Parse(Console.ReadLine());
