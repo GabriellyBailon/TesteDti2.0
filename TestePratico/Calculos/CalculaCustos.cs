@@ -6,89 +6,72 @@ using System.Text;
 namespace TestePratico.Calculos
 {
     class CalculaCustos
-    { 
-        public static List<string> CalculaMelhorPreco(List<double> custos)
+    {
+        public const double maiorDistancia = 2100;
+        public static List<string> CalculaMelhorPreco(params Petshop[] vetorPetshops)
         {
-            //Custo 0: Meu Canino Feliz
-            //Custo 1: Vai Rex
-            //Custo 2: ChowChawgas
-
             List<string> _dadosMelhorPreco = new List<string>();
-            double melhorCusto = custos[0];
-            int indexMelhor = 0;
-            string nomeMelhorpreco;
+            double melhorCusto = vetorPetshops[0].Custo;
+            Petshop petshopMelhorPreco =  vetorPetshops[0];
 
-            //Analisa se o custo atual é menor que todos os outros e seta o menor valor
-            foreach (double custo in custos)
+            //Analisando cada preço de Petshop passado e seta o menor valor
+            foreach (Petshop petshop in vetorPetshops)
             {
-                if (custo < melhorCusto)
+                if (petshop.Custo < melhorCusto)
                 {
-                    melhorCusto = custo;
-                    indexMelhor = custos.IndexOf(custo);
+                    melhorCusto = petshop.Custo;
+                    petshopMelhorPreco = petshop;
                 }
             }
+                _dadosMelhorPreco.Add(petshopMelhorPreco.Nome);
+                _dadosMelhorPreco.Add(petshopMelhorPreco.Custo.ToString("F2"));
+
 
             //Analisa se o menor valor encontrado se repetiu mais de uma vez entre os custos
-            if (custos.Count(x => x == melhorCusto) > 1)
+            if (vetorPetshops.Count(x => x.Custo == melhorCusto) > 1)
             {
-                _dadosMelhorPreco = Desempate(custos);
+                _dadosMelhorPreco = Desempate(melhorCusto, vetorPetshops);
             }
             else
             {
-                nomeMelhorpreco = RetornaNome(indexMelhor);
-                _dadosMelhorPreco.Add(nomeMelhorpreco);
-                _dadosMelhorPreco.Add(melhorCusto.ToString("F2"));
+                _dadosMelhorPreco.Add(petshopMelhorPreco.Nome);
+                _dadosMelhorPreco.Add(petshopMelhorPreco.Custo.ToString("F2"));
             }
 
             return _dadosMelhorPreco;
         }
 
         //Caso haja empate entre os custos, é chamada a função de desempate
-        private static List<string> Desempate(List<double> custos)
+        private static List<string> Desempate(double melhorCusto, params Petshop[] vetorPetshops)
         {
             List<string> _dadosMelhorPreco = new List<string>();
+            Petshop petshopMelhorPreco = vetorPetshops[0];
+            double menorDistancia = maiorDistancia;
 
-            if (custos[0] == custos[2] || custos[1] == custos[2])
+            //Percorre todo o vetor de objetos Petshop
+            foreach (Petshop petshop in vetorPetshops)
             {
-                _dadosMelhorPreco.Add(RetornaNome(2));
-                _dadosMelhorPreco.Add(custos[2].ToString("F2"));
+                //Analisa se o custo do Petshop é igual ao menor custo encontrado
+                if(petshop.Custo == melhorCusto)
+                {
+                    //Analisa a distância entre os Petshops e retorna o mais próximo
+                    if(petshop.Distancia < menorDistancia)
+                    {
+                        menorDistancia = petshop.Distancia;
+                        petshopMelhorPreco = petshop;
+                    }
+                }
             }
-            else if (custos[0] == custos[1])
-            {
-                _dadosMelhorPreco.Add(RetornaNome(1));
-                _dadosMelhorPreco.Add(custos[1].ToString("F2"));
-            }
+
+            //Adiciona os dados do Petshop mais próximo à lista de informações do
+            //Petshop com as melhores condições
+            _dadosMelhorPreco.Add(petshopMelhorPreco.Nome);
+            _dadosMelhorPreco.Add(petshopMelhorPreco.Custo.ToString("F2"));
 
             return _dadosMelhorPreco;
 
         }
 
-
-        //Função que pega o index e retorna o nome
-        private static string RetornaNome(int melhorIndex)
-        {
-            string _nomeMelhor;
-
-            switch (melhorIndex)
-            {
-                case 0:
-                    _nomeMelhor = "Meu Canino Feliz";
-                    break;
-
-                case 1:
-                    _nomeMelhor = "Vai Rex";
-                    break;
-
-                case 2:
-                    _nomeMelhor = "Chow Chawgas";
-                    break;
-
-                default:
-                    _nomeMelhor = "Petshop ainda não cadastrado";
-                    break;
-            }
-
-            return _nomeMelhor;
-        }
     }
 }
+
