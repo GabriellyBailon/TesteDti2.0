@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TestePratico.Calculos;
+using TestePratico.Entidades;
 
 namespace TestePratico
 {
@@ -13,14 +14,13 @@ namespace TestePratico
             int dia, mes, ano;
             int diaDeHoje;
             int quantidadeP, quantidadeG;
-            List<double> custos = new List<double>();
             List<string> melhorCusto;
             string resposta;
 
             //Criação dos objetos Petshop
-            Petshop meuCaninoFeliz = new Petshop("Meu Canino Feliz", 2000, 20, 40, 24, 48);
-            Petshop vaiRex = new Petshop("Vai Rex", 1700, 15, 50, 20, 55);
-            Petshop chowChawgas = new Petshop("ChowChawgas", 800, 30, 45, 30, 45);
+            IPetshop meuCaninoFeliz = new MeuCaninoFeliz();
+            IPetshop vaiRex = new VaiRex();
+            IPetshop chowChawgas = new ChowChawgas();
 
             //Loop caso o cliente queira repetir o processo
             while (true)
@@ -52,12 +52,12 @@ namespace TestePratico
                 vaiRex.SetCusto(diaDeHoje, quantidadeP, quantidadeG);
                 chowChawgas.SetCusto(diaDeHoje, quantidadeP, quantidadeG);
 
+
                 //Lista que guarda nome do Petshop de melhor preço e custo encontrado nele
-                melhorCusto = CalculaCustos.CalculaMelhorPreco(meuCaninoFeliz, vaiRex, chowChawgas);
+                melhorCusto = ComparaCustos.CalculaMelhorPreco(meuCaninoFeliz, vaiRex, chowChawgas);
 
                 //Impressão do resultado para o usuário
                 Console.WriteLine($"\nO melhor valor foi encontrado na {melhorCusto[0]} por R${melhorCusto[1]}");
-                //na {melhorCusto[0]}
 
                 Console.WriteLine("Deseja repetir o processo? S/N: ");
                 resposta = Console.ReadLine().ToUpper();
