@@ -9,9 +9,8 @@ namespace TestePratico
         static void Main(string[] args)
         {
             //Declaração das variáveis
-            string[] dadosData;
-            int dia, mes, ano;
             int diaDeHoje;
+            DateTime data;
             int quantidadeP, quantidadeG;
             List<double> custos = new List<double>();
             List<string> melhorCusto;
@@ -33,13 +32,12 @@ namespace TestePratico
                 Console.WriteLine("\nVamos lá!");
                 //Inserção da data
                 Console.Write("Insira a data de hoje no formato DD/MM/AAAA (com as barrinhas): ");
-                dadosData = Console.ReadLine().Split('/');
-                dia = int.Parse(dadosData[0]);
-                mes = int.Parse(dadosData[1]);
-                ano = int.Parse(dadosData[2]);
+                data = DateTime.Parse(Console.ReadLine());
 
                 //Calculando o dia atual com os dados passados
-                diaDeHoje = CalculaDia.DiaDaSemana(dia, mes, ano);
+                diaDeHoje = CalculaDia.DiaDaSemana(data);
+
+                Console.WriteLine(diaDeHoje);
 
                 //Inserção da quantidade de animais pequenos e grandes
                 Console.Write("Qual a quantidade de cãezinhos pequenos? ");

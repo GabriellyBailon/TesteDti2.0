@@ -6,15 +6,15 @@ namespace TestePratico
 {
     public static class CalculaDia
     {
-		public static int DiaDaSemana(int dia, int mes, int ano)
+		public static int DiaDaSemana(DateTime data)
 		{
 			int diadasemana;
 			int a, y, m, q, d;
 
-			a = (14 - mes) / 12;
-			y = ano - a;
-			m = mes + (12 * a) - 2;
-			q = dia + ((31 * m) / 12) + y + (y / 4) - (y / 100) + (y / 400);
+			a = (14 - data.Month) / 12;
+			y = data.Year - a;
+			m = data.Month + (12 * a) - 2;
+			q = data.Day + ((31 * m) / 12) + y + (y / 4) - (y / 100) + (y / 400);
 			d = q % 7;
 
 			diadasemana = d;
