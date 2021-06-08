@@ -4,42 +4,53 @@ using System.Text;
 
 namespace TestePratico
 {
-    class Petshop
+    public class TaxasBanho
     {
-        //Nome do Petshop
+        public double CaoPequeno { get; set; }
+        public double CaoGrande { get; set; }
+    }
+
+    public class Petshop
+    {
         public string Nome { get; set; }
         public double Distancia { get; private set; }
-        public double TaxaBanhoDiaDeSemana_P { get; private set; }
-        public double TaxaBanhoDiaDeSemana_G { get; private set; }
-        public double TaxaBanhoFimDeSemana_P { get; private set; }
-        public double TaxaBanhoFimDeSemana_G { get; private set; }
-        public double Custo { get; set; }
+        public TaxasBanho TaxasDiaDeSemana { get; private set; }
+        public TaxasBanho TaxasFimDeSemana { get; private set; }
 
 
-        //Construtor
         public Petshop(string nome, double distancia,
             double taxaBanhoDiaDeSemana_P, double taxaBanhoDiaDeSemana_G,
             double taxaBanhoFimDeSemana_P, double taxaBanhoFimDeSemana_G)
         {
             Nome = nome;
             Distancia = distancia;
-            TaxaBanhoDiaDeSemana_P = taxaBanhoDiaDeSemana_P;
-            TaxaBanhoDiaDeSemana_G = taxaBanhoDiaDeSemana_G;
-            TaxaBanhoFimDeSemana_P = taxaBanhoFimDeSemana_P;
-            TaxaBanhoFimDeSemana_G = taxaBanhoFimDeSemana_G;
+
+            TaxasDiaDeSemana = new TaxasBanho
+            {
+                CaoPequeno = taxaBanhoDiaDeSemana_P,
+                CaoGrande = taxaBanhoDiaDeSemana_G
+            };
+
+            TaxasFimDeSemana = new TaxasBanho
+            {
+                CaoPequeno = taxaBanhoFimDeSemana_P,
+                CaoGrande = taxaBanhoFimDeSemana_G
+            };
         }
 
-        public void SetCusto(int diaDaSemana, int quantidadeCaesP, int quantidadeCaesG)
+        public double CalcularCusto(int diaDaSemana, int CaesPequenos, int CaesGrandes)
         {
             double custoTotal;
 
-            //Cálculo feito para pesquisa de segunda a sexta
-            //Era um if/else
-            custoTotal = (diaDaSemana > 0 && diaDaSemana < 6) ?
-                (this.TaxaBanhoDiaDeSemana_P * quantidadeCaesP) + (this.TaxaBanhoDiaDeSemana_G * quantidadeCaesG) :
-                (this.TaxaBanhoFimDeSemana_P * quantidadeCaesP) + (this.TaxaBanhoFimDeSemana_G * quantidadeCaesG);
+            TaxasBanho taxas = TaxasFimDeSemana;
 
-            Custo = custoTotal;
+            if(diaDaSemana > 0 && diaDaSemana < 6)
+            {
+                taxas = TaxasDiaDeSemana;
+            }
+
+            custoTotal = taxas.CaoPequeno * CaesPequenos + (taxas.CaoGrande * CaesGrandes);
+            return custoTotal;
         }
     }
 }
